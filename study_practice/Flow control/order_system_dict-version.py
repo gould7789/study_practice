@@ -30,17 +30,40 @@
 
 
 # 주문 정보 입력
-
+choice_drink = input("음료를 선택하세요 (coffee/latte/juice): ").lower()
+choice_size = input("크기를 선택하세요 (small/medium/large): ").lower()
+choice_membership = input("멤버십이신가요? (yes/no): ").lower()
 
 # 음료 정보를 딕셔너리에 저장
-
+drink = {
+    "coffee" : 3000,
+    "latte"  : 4000,
+    "juice"  : 3500
+}
 
 # 사이즈 정보를 딕셔너리에 저장
-
-# 멤버십 여부
+size = {
+    "small"  : 0,
+    "medium" : 500,
+    "large"  : 1000
+}
 
 # 가격 계산 
+total = drink[choice_drink] + size[choice_size]     # 음료 가격 + 사이즈 추가 요금
+discount = total * 0.1                              # 멤버십 할인 10%
+final_total = total - discount                      # 멤버십을 가입한 손님일 때 최종 요금
+
+# 할인 문구 및 최종 결과 계산
+discount_str = f"-{int(discount)}원" if choice_membership == "yes" else "없음"      # 멤버십이 없을 때 "없음" 출력
+final_price = f"{int(final_total) if choice_membership == "yes" else total}원"      # 최종 결제 금액 출력
 
 # 출력
+print(f"""기본 가격 : {drink[choice_drink]}원
+크기 추가요금 : {size[choice_size]}원
+할인적용 : {discount_str}
+최종 결제 금액 : {final_price}""")
+
 
 # 무료 샷 조건
+if (choice_membership == "yes") and (choice_drink in ["coffee", "latte"]) and (choice_size in ["large"]):
+    print("무료 샷이 제공 됩니다!")
