@@ -43,9 +43,8 @@ while True:
 
     # 사용자가 '1~4' 이외의 메뉴를 선택했을 때
         else:
-            print("잘못된 입력입니다.")
-            print()
+            print("잘못된 입력입니다.\n")
+            
             
     except ValueError:                                                     # 사용자가 숫자 이외의 내용 입력 했을 때
-        print("숫자만 입력해주세요.")
-        print()
+        print("숫자만 입력해주세요.\n")
