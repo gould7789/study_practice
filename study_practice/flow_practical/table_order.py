@@ -7,7 +7,7 @@ input_m = int(input("행 수 입력: "))
 input_n = int(input("열 수 입력: "))
 
 for _ in range(input_t):
-    for _ in range(1, input_m + 1):
+    for _ in range(input_m):
         print("*" * input_n)
         
     print()
