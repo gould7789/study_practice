@@ -30,11 +30,14 @@ if menu == 1:
 
 # 2번 메뉴를 선택했을 때 랜덤 숫자 출력: 1~100 사이 난수 채우기
 elif menu == 2:
+    num_list = list(range(1, 101))              # 중복 제거를 위해 1~100까지 리스트 생성
     for t in range(1, input_t + 1):
         print(f"테이블 {t}")
         
         for _ in range(input_m):
             for _ in range(input_n):
-                print(random.randint(1, 100), end=" ")
+                rand_num = random.choice(num_list)     # 리스트에서 랜덤으로 인덱스 출력
+                print(rand_num, end=" ")
+                num_list.remove(rand_num)              # 출력된 값은 리스트에서 제거 -> 중복 출력 제거
             print()
         print()
