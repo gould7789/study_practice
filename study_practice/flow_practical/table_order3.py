@@ -36,3 +36,18 @@ for row_num in range(row):
             print(" ", end="")
         
     print()
+
+"""
+***
+* *
+***
+"""
+for row_num in range(row):
+    for col_num in range(col):
+        if row_num == 0 or row_num == 2:
+            print("*", end="")
+        elif col_num == 0 or col_num == 2:
+            print("*", end="")
+        else:
+            print(" ", end="")
+    print()
