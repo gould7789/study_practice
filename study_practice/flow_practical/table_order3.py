@@ -51,3 +51,18 @@ for row_num in range(row):
         else:
             print(" ", end="")
     print()
+    
+"""
+* *
+ *
+* *
+"""
+for row_num in range(row):
+    for col_num in range(col):
+        if (row_num == 0 or row_num == 2) and (col_num == 0 or col_num == 2):
+            print("*", end="")
+        elif row_num == 1 and col_num == 1:
+            print("*", end="")
+        else:
+            print(" ", end="")
+    print()
