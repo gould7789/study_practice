@@ -36,8 +36,11 @@ elif menu == 2:
         
         for _ in range(input_m):
             for _ in range(input_n):
-                rand_num = random.choice(num_list)     # 리스트에서 랜덤으로 인덱스 출력
-                print(rand_num, end=" ")
-                num_list.remove(rand_num)              # 출력된 값은 리스트에서 제거 -> 중복 출력 제거
+                rand_num = random.randint(0, len(num_list) - 1)     # 리스트의 인덱스 랜덤 숫자 출력
+                fin_num = num_list.pop(rand_num)                    # pop을 사용해서 출력 된 숫자 출력 후 제거
+                print(fin_num, end=" ")
+                # rand_num = random.choice(num_list)     # 리스트에서 랜덤으로 인덱스 출력
+                # print(rand_num, end=" ")
+                # num_list.remove(rand_num)              # 출력된 값은 리스트에서 제거 -> 중복 출력 제거
             print()
         print()
