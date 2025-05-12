@@ -30,5 +30,5 @@ shopping_list.insert(1, "orange juice")
 shopping_list.extend(["chiken", "rice"])
 print(f"최종 쇼핑 리스트: {shopping_list}")
 
-# 슬라이싱 예제제
+# 슬라이싱 예제
 print(shopping_list[2:5])
