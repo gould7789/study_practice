@@ -18,32 +18,34 @@ user_input = int(input("리스트 개수를 입력하세요 (5~20): "))
 if 5 <= user_input <= 20:
     # 리스트의 길이만큼 1~100 사이의 난수를 생성
     rand_list = [random.randint(1, 100) for _ in range(user_input)]
-    # print(f"생성된 리스트 : {rand_list}")
     
-    # 평균
+    # 평균 : 모든 값을 더해서 개수로 나눈 값
     total = 0
-    for num in range(rand_list):
+    for num in rand_list:
         total += num
-        mean = total / user_input
+    mean = total / user_input
     
-    # 편차
+    # 편차 : 각 수가 평균과 얼마나 차이나는지 나타내는 값
     deviation = []
-    for num in range(rand_list):
-        deviation.append(total - rand_list)
+    for num in rand_list:
+        deviation.append(num - mean)    # 편차 = 각값 - 평균
+        
+    # 분산 : 편차들을 제곱해서 평균 낸 것
+    total = 0
+    for num in deviation:
+        total += num ** 2               # 편차들을 제곱해서 값을 더함
+    variance = total / user_input       # 모든 편차 제곱의 합 /  데이터 개수
     
-    # 분산
-    
-    
-    # 표준편차
-    
-    
-    
-    
-    
+    # 표준편차 : 분산의 제곱근을 씌운 값
+    standard_deviation = math.sqrt(variance)
+
+    # 최종 출력
+    print(f"""생성된 리스트 : {rand_list}
+평균 : {round(mean, 2)}
+편차 : {[round(deviation_list, 2) for deviation_list in deviation]}
+분산 : {round(variance, 2)}
+표준편차 : {round(standard_deviation, 2)}""")
+
 # 범위 외의 숫자를 입력시 오류 메시지 출력
 else:
     print("오류: 리스트 개수는 5 이상 20 이하여야 합니다.")
-    
-print(f"""생성된 리스트 : {rand_list}
-평균 : {total}
-편차 : {deviation}""")
