@@ -11,7 +11,7 @@
 •  최종 합계는 print()로 출력
 """
 
-
+# get 사용 버전
 def add_numbers(*args, **kwargs):
     key_dict = {"abs", "only_even", "unique"}   # 키의 값을 비교할 딕셔너리의 키값들
     
@@ -43,57 +43,44 @@ add_numbers(1, -2, 2, -3)
 add_numbers(1, -2, 2, -3, abs=True, only_even=True)
 add_numbers(1, 2, 2, 3, 3, 4, 5, unique=True)
 add_numbers(1, 2, 3, round=True)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-#     for key, value in kwargs.items():
-#         if value == False:
-#             continue
-        
-#         # abs : True일 경우 모든 숫자를 절댓값으로 변환
-#         if key == "abs":
-#             abs_number = [abs(x) for x in args]
-            
-#         elif key == "only_even":
-#             only_total = 0
-#             for num in abs_number:
-#                 if num % 2 == 0:
-#                     only_total += num
-#             print(f"합계는 {only_total}입니다.")
 
-#         elif key == "unique":
-#             unique_total = set(args)
-#             unique_total = sum(unique_total)
-#             print(f"합계는 {unique_total}입니다.")
-            
-#         else:
-#             arg_total = sum(args)
-#             print(f"합계는 {arg_total}입니다.")
+
+# vanilla 버전
+def add_numbers(*args, **kwargs):
+    option = {"abs", "only_even", "unique"}
+    
+    for key in kwargs.keys():
+        if key not in option:
+            return None
+    
+    num_list = list(args)
+    
+    # 사용자가 abs 옵션을 지정했을 때 
+    if "abs" in kwargs and kwargs["abs"] == True:
+        for idx, num in enumerate(num_list):
+            if num < 0:
+                num_list[idx] = -num
+        
+    # 사용자가 only_even 옵션을 지정했을 때
+    if "only_even" in kwargs and kwargs["only_even"] == True:
+        num_list = [num for num in num_list if num % 2 == 0]
+        
+    # 사용자가 unique 옵션을 지정했을 때
+    if "unique" in kwargs and kwargs["unique"] == True:
+        unique_list = []
+        for num in num_list:
+            if num not in unique_list:
+                unique_list.append(num)
+        num_list = unique_list
         
         
-# add_numbers(1, -2, 2, -3)
-# add_numbers(1, -2, 2, -3, abs=True, only_even=True)
-# add_numbers(1, 2, 2, 3, 3, 4, 5, unique=True)
+    # 총 합계 계산
+    total = 0
+    for num in num_list:
+        total += num
+    
+    print(f"합계는 {total}입니다.")
+
+add_numbers(1, -2, 2, -3)
+add_numbers(1, -2, 2, -3, abs=True, only_even=True)
+add_numbers(1, 2, 2, 3, 3, 4, 5, unique=True)
