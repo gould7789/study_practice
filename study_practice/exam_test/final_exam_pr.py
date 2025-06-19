@@ -46,19 +46,23 @@ while True:
     # 학생 성적 출력
     elif menu_choice == 2:
         #오류
-        if std_num not in std_dict:
+        if not std_dict:
             print("저장된 학생 정보가 없습니다.")
             continue
         
         print("[전체 학생 성적]")
+        count = 0
         for key, val in std_dict.items():   # 학번 : {정보 목록 : 정보}
-            for key_2 in val.keys():    # 정보 목록 : 정보 -> 정보 목록 출력
-                print(f"{key_2}", end="\t")
-            print()
+            if count == 0:
+                for key_2 in val.keys():    # 정보 목록 : 정보 -> 정보 목록 출력
+                    print(f"{key_2}", end="\t")
+                print()
+                count += 1                  # 항목은 한 번만 출력되도록
             
             for val_2 in val.values():  # 정보 목록 : 정보 -> 정보 출력
                 print(f"{val_2}", end="\t")
-            
+            print()
+        
                 
     # 학생 성적 확인
     elif menu_choice == 3:
@@ -70,9 +74,9 @@ while True:
             continue
         
         print("\n[학생 정보]")
-        for key, val in std_dict.items():
-            for key_2, val_2 in val.items():
-                print(f"{key_2}: {val_2}")
+        student = std_dict[grade]           # 학번 조회
+        for key, val in student.items():
+            print(f"{key}: {val}")
         
 
     # 학생 성적 삭제
