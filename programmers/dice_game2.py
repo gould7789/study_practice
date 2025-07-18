@@ -3,7 +3,7 @@
 네 주사위를 굴렸을 때 나온 숫자에 따라 다음과 같은 점수를 얻습니다.
 
 네 주사위에서 나온 숫자가 모두 p로 같다면 1111 × p점을 얻습니다.
-세 주사위에서 나온 숫자가 p로 같고 나머지 다른 주사위에서 나온 숫자가 q(p ≠ q)라면 (10 × p + q)2 점을 얻습니다.
+세 주사위에서 나온 숫자가 p로 같고 나머지 다른 주사위에서 나온 숫자가 q(p ≠ q)라면 (10 × p + q)**2 점을 얻습니다.
 주사위가 두 개씩 같은 값이 나오고, 나온 숫자를 각각 p, q(p ≠ q)라고 한다면 (p + q) × |p - q|점을 얻습니다.
 어느 두 주사위에서 나온 숫자가 p로 같고 나머지 두 주사위에서 나온 숫자가 각각 p와 다른 q, r(q ≠ r)이라면 q × r점을 얻습니다.
 네 주사위에 적힌 숫자가 모두 다르다면 나온 숫자 중 가장 작은 숫자 만큼의 점수를 얻습니다.
@@ -28,13 +28,29 @@ def solution(a, b, c, d):
     if len(items) == 1:
         return 1111 * items[0][0]
     
-    # 3개가 같은 숫자
+    # 3+1 or 2+2
     elif len(items) == 2:
+        # 3+1
         if items[0][1] == 3 or items[1][1] == 3:
             p = items[0][0] if items[0][1] == 3 else items[1][0]
-            q = items[1][0]
+            q = items[1][0] if items[0][1] == 3 else items[0][0]
+            return (10 * p + q)**2
+        # 2+2
+        else:
+            p, q = items[0][0], items[1][0]
+            return (p + q) * abs(p - q)
     
-    return items
+    # 2+1+1
+    elif len(items) == 3:
+        total = 1
+        for num, cnt in counts.items():
+            if cnt == 1:
+                total *= num
+        return total
+    
+    # 모든 수가 다름
+    else:
+        return min(dice)
 
 print(solution(2, 2, 2, 2))     # 2222      / 1111 x 2
 print(solution(4, 1, 4, 4))     # 1681      / (10 x 4 + 1)**2
