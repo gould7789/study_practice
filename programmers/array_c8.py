@@ -15,14 +15,18 @@
 def solution(arr, k):
     answer = []
     
+    # 리스트 안의 요소의 갯수가 k가 될 때까지 반복
     while len(answer) < k:
         for num in arr:
+            # 처음 나오는 숫자면 리스트에 삽입
             if num not in answer:
                 answer.append(num)
             
+            # 리스트의 길이가 k와 같아지면 종료
             if len(answer) == k:
                 break
         
+        # 순회가 끝나도 길이가 부족하다면 -1 삽입
         if len(answer) < k:
             answer.append(-1)
     
