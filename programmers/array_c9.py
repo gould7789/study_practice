@@ -14,23 +14,6 @@ stk에 원소가 있는데 stk의 마지막 원소가 arr[i]와 다르면 stk의
 def solution(arr):
     stk = []
     
-    # for i in range(0, len(arr)):
-    #     # stk가 빈 배열이면 arr[i]을 추가하고 i+1
-    #     if len(stk) <= 0:
-    #         stk.append(arr[i])
-            
-    #     # stk에 원소가 있고, stk의 마지막 원소가 arr[i]와 같으면 stk의 마지막 원소 제거 및 i+1
-    #     elif len(arr) > 0 and arr[i] == stk[-1]:
-    #         del stk[-1]
-            
-    #     # stk에 원소가 있고, stk의 마지막 원소가 arr[i]와 다르면 skt의 마지막에 arr[i] 추가 및 i+1
-    #     elif len(arr) > 0 and arr[i] != stk[-1]:
-    #         stk.append(arr[i])
-        
-    # # 빈 배열을 리턴한다면 [-1]
-    # if len(stk) <= 0:
-    #     stk.append(-1)
-    
     for i in range(len(arr)):
         # stt에 원소가 있고, stk의 마지막 원소가 arr[i]와 같으면 stk의 마지막 원소 제거
         if stk and stk[-1] == arr[i]:
