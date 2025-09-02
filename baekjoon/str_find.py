@@ -10,12 +10,14 @@ a = [chr(word) for word in range(97, 123)]
 # 사용자가 문자열 입력
 user_input = input()
 
-# # 리스트를 순회하며 
-# for idx, word in enumerate(a):
-#     if word in user_input:
-#         print(user_input.index(word), end=" ")
-#     else:
-#         print(-1, end= " ")
-        
+# 리스트를 순회하며 
+for idx, word in enumerate(a):
+    if word in user_input:
+        print(user_input.index(word), end=" ")
+    else:
+        print(-1, end= " ")
+
+# find 함수
+# 문자열에서 해당 문자가 몇번째 인덱스인지 출력 및 그 문자가 없을 때 자동으로 false값 출력
 for word in a:
     print(user_input.find(word), end=" ")
