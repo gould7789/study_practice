@@ -29,6 +29,7 @@ def cal(a, b, c):
             
             if 0< user_input < 4:
                 # 메뉴 선택 결과
+                # 각 메뉴에 따른 리턴하는 변수값이 다름
                 if user_input == 1:
                     return top(a, b)
                 elif user_input == 2:
