@@ -17,7 +17,7 @@ for idx, word in enumerate(a):
     else:
         print(-1, end= " ")
 
-# find 함수
+# find 함수 
 # 문자열에서 해당 문자가 몇번째 인덱스인지 출력 및 그 문자가 없을 때 자동으로 false값 출력
 for word in a:
     print(user_input.find(word), end=" ")
