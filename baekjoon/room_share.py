@@ -25,6 +25,16 @@ T = int(input())
 for _ in range(T):
     
     # 층수 및 인원 수 딕셔너리
-    floor = {}
+    floor_dict = {}
     
-    # 
+    # 층수
+    k = int(input())
+    # 호수
+    n = int(input())
+    
+    for f in range(k):
+        # 0층 추가
+        if not floor_dict:
+            floor_dict[k] += []
+        
+        # 딕셔너리 안에 층이 있을 경우 그 층에 맞게 호수별로 인원수 삽입
